@@ -1,0 +1,46 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
+
+public class Day1 {
+	
+	String fileName = "*********************************";
+	int moduleValue = 0;
+	int fuelRequired = 0;
+	double totalFuelRequired = 0;
+	
+	
+	public double FuelCalculator() {
+
+		try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
+			
+			stream.forEach(module -> {
+				moduleValue = Integer.parseInt(module.trim());
+			  fuelRequired = (Math.abs(moduleValue/3) - 2);
+				  while(fuelRequired > 0) {
+					  moduleValue = fuelRequired;
+					  totalFuelRequired = totalFuelRequired + fuelRequired;
+					  fuelRequired = (Math.abs(moduleValue/3) - 2);
+				  }
+				System.out.println("i'm here");
+			});
+			
+		} catch (IOException e) {
+			System.out.println(e);
+		} catch (Exception f) {
+			System.out.println(f);
+		}
+		System.out.println(totalFuelRequired);
+		return totalFuelRequired;
+	}
+	
+
+	public static void main(String[] args) {
+		
+		Day1 day1 = new Day1();
+		System.out.println(day1.FuelCalculator());
+		
+	}
+
+}
