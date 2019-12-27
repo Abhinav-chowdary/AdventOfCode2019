@@ -1,0 +1,44 @@
+public class Day2Part1 {
+
+	int[] finalArray  = {Input Array values};
+	
+	
+	public int intArrayCalculator() {
+		
+		for(int i = 0; i < finalArray.length; i = i+4) {
+			
+			switch (finalArray[i]) {
+			
+			case 1:
+				
+				finalArray[finalArray[i+3]]  = finalArray[finalArray[i+1]] + finalArray[finalArray[i+2]];
+				break;
+				
+			case 2:
+				
+				finalArray[finalArray[i+3]]  = finalArray[finalArray[i+1]] * finalArray[finalArray[i+2]];
+				break;
+				
+			case 99:
+				
+				return finalArray[0];
+
+			default:
+				System.out.println("something went wrong");	
+				break;
+			}
+			
+		}
+		
+		return finalArray[0];
+	}
+	
+	public static void main(String[] args) {
+		
+		Day2Part1 part1 = new Day2Part1();
+		
+		System.out.println("final value at 0th position is :" + part1.intArrayCalculator());
+
+	}
+
+}
